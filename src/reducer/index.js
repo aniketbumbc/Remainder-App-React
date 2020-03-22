@@ -1,3 +1,4 @@
+//reducer function
 import { ADD_REM } from '../constant';
 
 

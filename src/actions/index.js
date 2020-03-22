@@ -1,3 +1,4 @@
+//Action creator function 
 import {ADD_REM} from '../constant';
 
 export const addRemainder = (text) =>{
@@ -5,7 +6,7 @@ export const addRemainder = (text) =>{
             type:ADD_REM,
             text:text
       }
-      console.log("actinRemainder", action);
-      return action
+      console.log("actinRemainder ", action);
+      return action;
 
 }
