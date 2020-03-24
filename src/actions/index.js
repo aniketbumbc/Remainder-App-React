@@ -1,10 +1,12 @@
-//Actions and action  creator function 
+//Actions and actioncreator function 
 import {ADD_REM,REM_DEL} from '../constant';  
 
-export const addRemainder = (text) =>{
+export const addRemainder = (text,dueDate) =>{
+      debugger;
       const action  = {
             type:ADD_REM,
-            text:text
+            text:text,
+            dueDate:dueDate
       }
       console.log("actinRemainder ", action);
     

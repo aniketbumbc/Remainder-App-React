@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux'; 
 import reducer from './reducer';
 import Student from './componets/Student';
-
+import "react-datepicker/dist/react-datepicker.css";
 
 const store = createStore(reducer);
 

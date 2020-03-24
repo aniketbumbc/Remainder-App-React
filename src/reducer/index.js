@@ -6,12 +6,12 @@ import { ADD_REM, REM_DEL } from '../constant';
 const remainder = (action) => {
       return {
             text: action.text,
+            dueDate:action.dueDate, 
             id: Math.random()
       }
 }
 
 const removeById = (state = [], id) => {
-      debugger;
       const remainders = state.filter(rem => rem.id !== id);
       console.log("new delete", remainders);
       return remainders;
@@ -27,7 +27,6 @@ const remainders = (state = [], action) => {
                   console.log('remainder state', remainders);
                   return remainders;
             case REM_DEL:
-                        debugger;
                   remainders = removeById(state, action.id);
                   return remainders;
             default:

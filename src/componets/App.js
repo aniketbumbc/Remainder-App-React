@@ -3,26 +3,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addRemainder, deleteRemainder } from '../actions/index';
 
+
+
 class App extends Component {
 
       constructor(props) {
             super(props)
             this.state = {
-                  text: ''
+                  text: '',
+                  dueDate: ''
             }
 
             this.handleChange = this.handleChange.bind(this);
             this.addRemainder = this.addRemainder.bind(this);
             this.deleteRemainder = this.deleteRemainder.bind(this);
+            this.getPickerValue = this.getPickerValue.bind(this);
       }
 
       addRemainder() {
-
-            this.props.addRemainder(this.state.text);
+            this.props.addRemainder(this.state.text, this.state.dueDate);
       }
 
       deleteRemainder(id) {
-            debugger;
             this.props.deleteRemainder(id);
 
       }
@@ -58,6 +60,9 @@ class App extends Component {
             this.setState({ text: event.target.value });
       }
 
+      getPickerValue = (event) => {
+            this.setState({ dueDate:event.target.value});
+      }
 
       render() {
 
@@ -71,6 +76,8 @@ class App extends Component {
                                     <input className="form-control"
                                           placeholder="List of Remainder...."
                                           onChange={this.handleChange} />
+                                          <input type="date" className="form-control"
+                                          id="birthday" onChange={this.getPickerValue}/>                                   
                               </div>
                               <button type="button"
                                     className="btn btn-success"
