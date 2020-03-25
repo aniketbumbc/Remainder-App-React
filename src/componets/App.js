@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addRemainder, deleteRemainder } from '../actions/index';
+import { addRemainder, deleteRemainder,removeAll } from '../actions/index';
+import moment from 'moment';
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
       }
 
       addRemainder() {
+            debugger;
             this.props.addRemainder(this.state.text, this.state.dueDate);
       }
 
@@ -37,7 +39,8 @@ class App extends Component {
                                     return (
                                           <li key={rem.id} className="list-group-item">
                                                 <div className="list-item">
-                                                      {rem.text}
+                                                      <div>{rem.text} </div>
+                                                       <div><em> {moment(new Date (rem.dueDate)).fromNow()} </em></div>                   
                                                 </div>
                                                 <div onClick={() => this.deleteRemainder(rem.id)}
 
@@ -85,6 +88,12 @@ class App extends Component {
                               > Add Remainder </button>
                         </div>
                         {this.renderRemainders()}
+                        <br/>
+                        <div className="btn btn-danger"
+                        onClick={()=> this.props.removeAll()}
+                        >
+                              Remove All
+                        </div>
                   </div>
             )
       }
@@ -93,7 +102,7 @@ class App extends Component {
 // pass action to reducers with dispatch
 function mapDispatchToProps(dispatch) {
 
-      return bindActionCreators({ addRemainder, deleteRemainder }, dispatch);
+      return bindActionCreators({ addRemainder, deleteRemainder,removeAll }, dispatch);
 
 
 }

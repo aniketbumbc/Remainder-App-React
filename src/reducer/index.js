@@ -1,33 +1,37 @@
 //reducer function remainders
-import { ADD_REM, REM_DEL } from '../constant';
+import { ADD_REM, REM_DEL, REM_ALL } from '../constant';
+import { bake_cookie, read_cookie } from 'sfcookies';
 
 
 
 const remainder = (action) => {
       return {
             text: action.text,
-            dueDate:action.dueDate, 
+            dueDate: action.dueDate,
             id: Math.random()
       }
 }
 
 const removeById = (state = [], id) => {
       const remainders = state.filter(rem => rem.id !== id);
-      console.log("new delete", remainders);
       return remainders;
 
 }
-
-
 const remainders = (state = [], action) => {
       let remainders = null;
+      state = read_cookie('remainders');
       switch (action.type) {
             case ADD_REM:
                   remainders = [...state, remainder(action)];
-                  console.log('remainder state', remainders);
+                  bake_cookie('remainders', remainders);
                   return remainders;
             case REM_DEL:
                   remainders = removeById(state, action.id);
+                  bake_cookie('remainders', remainders);
+                  return remainders;
+            case REM_ALL:
+                  remainders = [];
+                  bake_cookie('remainders', remainders);
                   return remainders;
             default:
                   return state

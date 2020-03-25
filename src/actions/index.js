@@ -1,8 +1,8 @@
 //Actions and actioncreator function 
-import {ADD_REM,REM_DEL} from '../constant';  
+import {ADD_REM,REM_DEL,REM_ALL} from '../constant';  
 
 export const addRemainder = (text,dueDate) =>{
-      debugger;
+
       const action  = {
             type:ADD_REM,
             text:text,
@@ -15,11 +15,18 @@ export const addRemainder = (text,dueDate) =>{
 }
 
 export const deleteRemainder = (id) =>{
-      debugger;
+ 
       const action ={
             type:REM_DEL,
             id:id
       }
-            console.log("Yahooo Delete",action);
+      return action;
+}
+
+export const removeAll = () =>{
+      const action = {
+            type:REM_ALL
+      }
+
       return action;
 }
