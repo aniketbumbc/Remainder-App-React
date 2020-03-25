@@ -24,6 +24,8 @@ class App extends Component {
       addRemainder() {
             debugger;
             this.props.addRemainder(this.state.text, this.state.dueDate);
+            this.refs.remainderValue.value = ' ';
+            this.refs.dateValue.value = null;            
       }
 
       deleteRemainder(id) {
@@ -61,6 +63,7 @@ class App extends Component {
 
       handleChange(event) {
             this.setState({ text: event.target.value });
+          
       }
 
       getPickerValue = (event) => {
@@ -78,8 +81,8 @@ class App extends Component {
                               <div className="form-group">
                                     <input className="form-control"
                                           placeholder="List of Remainder...."
-                                          onChange={this.handleChange} />
-                                          <input type="date" className="form-control"
+                                          onChange={this.handleChange} ref="remainderValue" />
+                                          <input type="date" className="form-control" ref="dateValue"
                                           id="birthday" onChange={this.getPickerValue}/>                                   
                               </div>
                               <button type="button"
